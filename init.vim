@@ -14,6 +14,8 @@ set cc=80                    " set an 80 column border for good coding style
 set nowritebackup
 set noswapfile
 set nobackup
+set cursorline               " hightline cursor line
+" set cursorcolumn
 
 " set leader
 let mapleader = ','
@@ -29,11 +31,6 @@ colorscheme solarized8
 " file type
 filetype off
 
-" status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle')
@@ -47,9 +44,21 @@ Plugin 'itchyny/lightline.vim'    " light status line
 Plugin 'terryma/vim-multiple-cursors'  " multiple cursors
 Plugin 'editorconfig/editorconfig-vim'  " editor config
 Plugin 'mxw/vim-jsx'                    " jsx
-Plugin 'pangloss/vim-javascript'        " js
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'styled-components/vim-styled-components'
+
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'        " js
+Plugin 'leafgarland/typescript-vim'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Quramy/vim-dtsm'
+Plugin 'mhartington/vim-typings'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -93,4 +102,28 @@ let g:ctrlp_custom_ignore = {
 
 " javascript library syntax
 let g:used_javascript_libs = 'jquery,react,requiredjs,vue,'
+
+" nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align-line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = {
+  \ 'c': {'left': '/**', 'right': '*/'}, 
+  \ 'js': {'left': '/*', 'right': '*/'}, 
+  \ 'tsx': {'left': '/*', 'right': '*/'},
+  \ }
+
+" status line
+set statusline+=%#warningmsg#
+set statusline+=%*
+" set statusline+=%{SyntasticStatuslineFlag()}
+
+" typescript 
+let g:typescript_indent_disable = 1
 
